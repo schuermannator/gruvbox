@@ -4,6 +4,8 @@
 " Author: morhetz <morhetz@gmail.com>
 " Source: https://github.com/morhetz/gruvbox
 " Last Modified: 12 Aug 2017
+" Additional modifications: Zach Schuermann <zachary.schuermann@gmail.com>
+" Last Modified: 22 Feb 2021
 " -----------------------------------------------------------------------------
 
 " Supporting code -------------------------------------------------------------
@@ -86,7 +88,7 @@ let s:is_dark=(&background == 'dark')
 let s:gb = {}
 
 " fill it with absolute colors
-let s:gb.dark0_hard  = ['#1d2021', 234]     " 29-32-33
+let s:gb.dark0_hard  = ['#1b1e1f', 234]     " 29-32-33 => 27-30-31
 let s:gb.dark0       = ['#282828', 235]     " 40-40-40
 let s:gb.dark0_soft  = ['#32302f', 236]     " 50-48-47
 let s:gb.dark1       = ['#3c3836', 237]     " 60-56-54
@@ -131,6 +133,7 @@ let s:gb.faded_purple   = ['#8f3f71', 96]      " 143-63-113
 let s:gb.faded_aqua     = ['#427b58', 66]      " 66-123-88
 let s:gb.faded_orange   = ['#af3a03', 130]     " 175-58-3
 
+let s:gb.comment   = ['#6272a4', 240]
 " }}}
 " Setup Emphasis: {{{
 
@@ -475,7 +478,7 @@ endif
 
 if version >= 700
   " Screen line that the cursor is
-  call s:HL('CursorLine',   s:none, s:bg1)
+  call s:HL('CursorLine',   s:none, s:yellow)
   " Screen column that the cursor is
   hi! link CursorColumn CursorLine
 
