@@ -88,6 +88,8 @@ let s:is_dark=(&background == 'dark')
 let s:gb = {}
 
 " fill it with absolute colors
+let s:gb.night       = ['#131619', 254]     " 25-25-25
+
 let s:gb.dark0_hard  = ['#1b1e1f', 234]     " 29-32-33 => 27-30-31
 let s:gb.dark0       = ['#282828', 235]     " 40-40-40
 let s:gb.dark0_soft  = ['#32302f', 236]     " 50-48-47
@@ -168,6 +170,9 @@ endif
 let s:vim_bg = ['bg', 'bg']
 let s:vim_fg = ['fg', 'fg']
 let s:none = ['NONE', 'NONE']
+
+" added
+let s:night = s:gb.night
 
 " determine relative colors
 if s:is_dark
@@ -464,9 +469,6 @@ call s:HL('GruvboxOrangeSign', s:orange, s:sign_column, s:invert_signs)
 " Vanilla colorscheme ---------------------------------------------------------
 " General UI: {{{
 
-" Normal text
-call s:HL('Normal', s:fg1, s:bg0)
-
 " Correct background (see issue #7):
 " --- Problem with changing between dark and light on 256 color terminal
 " --- https://github.com/morhetz/gruvbox/issues/7
@@ -476,9 +478,12 @@ else
   set background=light
 endif
 
+" Normal text
+call s:HL('Normal', s:fg1, s:bg0)
+
 if version >= 700
   " Screen line that the cursor is
-  call s:HL('CursorLine',   s:none, s:bg1) " TODO
+  call s:HL('CursorLine', s:none, s:night)
   " Screen column that the cursor is
   hi! link CursorColumn CursorLine
 
@@ -490,7 +495,8 @@ if version >= 700
   hi! link TabLine TabLineFill
 
   " Match paired bracket under the cursor
-  call s:HL('MatchParen', s:none, s:bg3, s:bold)
+  call s:HL('MatchParen', s:none, s:bg1, s:bold) 
+  " call s:HL('MatchParen', s:none, s:none, s:underline) 
 endif
 
 if version >= 703
