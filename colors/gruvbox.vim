@@ -478,7 +478,7 @@ endif
 
 if version >= 700
   " Screen line that the cursor is
-  call s:HL('CursorLine',   s:none, s:yellow)
+  call s:HL('CursorLine',   s:none, s:bg1) " TODO
   " Screen column that the cursor is
   hi! link CursorColumn CursorLine
 
@@ -583,9 +583,9 @@ call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
 " Generic statement
 hi! link Statement GruvboxRed
 " if, then, else, endif, swicth, etc.
-hi! link Conditional GruvboxRed
+hi! link Conditional GruvboxPurple
 " for, do, while, etc.
-hi! link Repeat GruvboxRed
+hi! link Repeat GruvboxPurple
 " case, default, etc.
 hi! link Label GruvboxRed
 " try, catch, throw
@@ -593,28 +593,28 @@ hi! link Exception GruvboxRed
 " sizeof, "+", "*", etc.
 hi! link Operator Normal
 " Any other keyword
-hi! link Keyword GruvboxRed
+hi! link Keyword GruvboxPurple
 
 " Variable name
-hi! link Identifier GruvboxBlue
+hi! link Identifier GruvboxRed
 " Function name
-hi! link Function GruvboxGreenBold
+hi! link Function GruvboxBlue
 
 " Generic preprocessor
-hi! link PreProc GruvboxAqua
+hi! link PreProc GruvboxYellow
 " Preprocessor #include
-hi! link Include GruvboxAqua
+hi! link Include GruvboxBlue
 " Preprocessor #define
 hi! link Define GruvboxAqua
 " Same as Define
-hi! link Macro GruvboxAqua
+hi! link Macro GruvboxRed
 " Preprocessor #if, #else, #endif, etc.
 hi! link PreCondit GruvboxAqua
 
 " Generic constant
-hi! link Constant GruvboxPurple
+hi! link Constant GruvboxOrange
 " Character constant: 'c', '/n'
-hi! link Character GruvboxPurple
+hi! link Character GruvboxRed
 " String constant: "this is a string"
 if g:gruvbox_improved_strings == 0
   call s:HL('String',  s:green, s:none, s:italicize_strings)
@@ -622,11 +622,11 @@ else
   call s:HL('String',  s:fg1, s:bg1, s:italicize_strings)
 endif
 " Boolean constant: TRUE, false
-hi! link Boolean GruvboxPurple
+hi! link Boolean GruvboxOrange
 " Number constant: 234, 0xff
-hi! link Number GruvboxPurple
+hi! link Number GruvboxOrange
 " Floating point constant: 2.3e10
-hi! link Float GruvboxPurple
+hi! link Float GruvboxOrange
 
 " Generic type
 hi! link Type GruvboxYellow
@@ -637,6 +637,26 @@ hi! link Structure GruvboxAqua
 " typedef
 hi! link Typedef GruvboxYellow
 
+" }}}
+" Rust Highlighting: {{{
+hi! link rustIdentifier GruvboxYellow
+hi! link rustFieldParam GruvboxBlue
+hi! link rustUserType GruvboxYellow
+hi! link rustCommentLineDoc GruvboxAqua
+hi! link rustFuncName GruvboxBlueBold
+" }}}
+" TreeSitter Highlighting: {{{
+hi! link TSIdentifier GruvboxYellow
+hi! link TSField GruvboxBlue
+"hi! link rustUserType GruvboxYellow
+"hi! link rustCommentLineDoc GruvboxAqua
+"hi! link rustFuncName GruvboxBlueBold
+"hi! link TSInclude GruvboxPurple
+"hi! link TSNamespace GruvboxBlue
+"hi! link TSConditional GruvboxPurple
+"hi! link TSKeyword GruvboxOrange
+"hi! link TSFuncMacro GruvboxRed
+"hi! link TSTypeBuiltin GruvboxYellow
 " }}}
 " Completion Menu: {{{
 
